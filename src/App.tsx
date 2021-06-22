@@ -24,20 +24,23 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // ****************************USE STATE************************
 function App() {
-  const [studentField, setStudentField] = useState('');
-  const [studentName, setStudentName] = useState('');
-  const [studentEmail, setStudentEmail] = useState('');
+  const [useField, setUserField] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userRollNo, setUserRollNo] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  // -------------------------GLOBAL CONTEXT API data to be shared-------------------
   let dynamicData: {
-    studentField: String;
-    studentName: String;
-    studentEmail: String;
+    useField: String;
+    userName: String;
+    userEmail: String;
+    userRollNo: String;
     isLoggedIn: boolean;
   } = {
-    studentField: studentField,
-    studentName: studentName,
-    studentEmail: studentEmail,
+    userRollNo: userRollNo,
+    useField: useField,
+    userName: userName,
+    userEmail: userEmail,
     isLoggedIn: isLoggedIn,
   };
 
@@ -57,6 +60,10 @@ function App() {
               component={() => {
                 return (
                   <LoginPage
+                    setUserField={setUserField}
+                    setUserName={setUserName}
+                    setUserEmail={setUserEmail}
+                    setUserRollNo={setUserRollNo}
                     stateoflogin={isLoggedIn}
                     setLogState={setIsLoggedIn}
                   />

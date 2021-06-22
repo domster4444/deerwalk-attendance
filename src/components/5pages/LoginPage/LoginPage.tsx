@@ -84,8 +84,18 @@ const LoginPage = (props: any) => {
         })
         .then((res) => {
           console.log(res);
+          console.log(res.data.accountHolder);
+          console.log(res.data.accountHolderEmail);
+          console.log(res.data.accountHolderEnrolledCourse);
+          console.log(res.data.accountHolderRollNo);
+          console.log(res.data.message);
           // --------------------------------------------------EMPTY FIELD STATE AND DOM VALUE
           resetFormDomStateVal();
+          //------------------------------------------>updating  userData state val after login success on response of their data
+          props.setUserName(res.data.accountHolder);
+          props.setUserEmail(res.data.accountHolderEmail);
+          props.setUserField(res.data.accountHolderEnrolledCourse);
+          props.setUserRollNo(res.data.accountHolderRollNo);
 
           if (res.data.message === 'login success') {
             props.setLogState(true);
