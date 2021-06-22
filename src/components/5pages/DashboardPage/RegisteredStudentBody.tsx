@@ -1,11 +1,14 @@
+import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 import { ListGroup } from 'react-bootstrap';
 
 // --------------STYLED COMPONENT
 import List from '../../1atoms/List/List';
 const RegisteredStudentBody = () => {
+  const [allCSITRegistered, setAllCSITRegistered] = useState([]);
   useEffect(() => {
     let register_std_list = document.querySelectorAll(
       '.registered-user-listgroup'
@@ -19,82 +22,28 @@ const RegisteredStudentBody = () => {
         );
       });
     }
+
+    // ---------------------------------AXIOS GET ALL  CSIT REGISTERED STUDENTS
+    axios
+      .get('http://localhost:5000/api/csitregistered')
+      .then((res) => {
+        console.log(res.data);
+        setAllCSITRegistered(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
-  // todo:---------------------------------AXIOS ALL STUDENT DATA FETCH
-  let listEntries: {
-    userName: String;
-    userRollNo: number;
-    userEmail: String;
-    courseEnrolled: String;
-  } = {
-    userName: 'Kshitiz',
-    userRollNo: 369,
-    userEmail: 'kshitiz.stha11@gmail.com',
-    courseEnrolled: 'CSIT',
-  };
   return (
     <>
       <ListGroup>
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
-        <List data={listEntries} />
+        <List
+          userName={'kshitiz'}
+          userRollNo={369}
+          userEmail={'kshitiz.stha11@gmail.com'}
+          courseEnrolled={'CSIT'}
+        />
       </ListGroup>
     </>
   );

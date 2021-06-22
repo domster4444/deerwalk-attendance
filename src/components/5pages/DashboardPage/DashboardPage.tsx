@@ -5,9 +5,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import DashboardHeader from '../../3.Organisms/DashboardHeader/DashboardHeader';
 import DashboardNav from '../../3.Organisms/DashboardNav/DashboardNav';
+import AboutUsBody from './AboutUsBody';
 import AbsentStudentBody from './AbsentStudentBody';
+import AllStudentBody from './AllStudentBody';
 // ------BODY
 import DashboardBody from './DashboardBody';
+import MyProfileBody from './MyProfileBody';
 import PresentStudentBody from './PresentStudentBody';
 import RegisteredStudentBody from './RegisteredStudentBody';
 
@@ -41,6 +44,9 @@ const DashboardPage = (props: any) => {
                 path="/absentstudent"
                 component={() => <AbsentStudentBody />}
               />
+              <Route path="/allstudent" component={() => <AllStudentBody />} />
+              <Route path="/myprofile" component={() => <MyProfileBody />} />
+              <Route path="/aboutus" component={() => <AboutUsBody />} />
             </Switch>
           </div>
         </div>
